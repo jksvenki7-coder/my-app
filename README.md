@@ -33,7 +33,39 @@ freshtohome
         <button onclick="showSection('orders')">Orders</button>
         <button onclick="showSection('contact')">Contact</button>
         <button style="margin-top:auto;" onclick="showSection('profile')">Profile</button>
-    </div>
+    </div>function submitOrder() {
+    const name = document.getElementById('name').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const order = document.getElementById('order').value.trim();
+    const address = document.getElementById('address').value.trim();
+
+    if (!name) {
+        alert('Please enter your name.');
+        return;
+    }
+    if (!mobile || !/^\d{10}$/.test(mobile)) {
+        alert('Please enter a valid 10-digit mobile number.');
+        return;
+    }
+    if (!order) {
+        alert('Please enter your order details.');
+        return;
+    }
+    if (!address) {
+        alert('Please enter your delivery address.');
+        return;
+    }
+
+    document.getElementById('order-list').innerHTML = `
+        <strong>Order Details:</strong><br>
+        Name: ${name}<br>
+        Mobile: ${mobile}<br>
+        Order: ${order}<br>
+        Address: ${address}
+    `;
+
+    showSection('orders');
+}
     <div id="main-content">
         <!-- Home Section -->
         <div id="home-section">
